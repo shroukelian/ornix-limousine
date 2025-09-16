@@ -681,6 +681,31 @@ ul {
     color: #888;
     font-size: 0.9rem;
 }
+/* Styling for Social Media Icons in Footer */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2a2a2a; /* لون أغمق قليلاً من خلفية الفوتر */
+    border-radius: 50%;
+    color: var(--light-text);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    transform: translateY(-5px);
+}
 
 /* ======================= Floating Buttons ======================= */
 .floating-buttons {
