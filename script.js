@@ -43,11 +43,53 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, {
-    threshold: 0.1 // يبدأ الأنيميشن عندما يظهر 10% من العنصر
+    threshold: 0.1 
 });
 
 scrollElements.forEach(el => {
     observer.observe(el);
 });
 
-// (سيتم إضافة كود الأنيميشن عند التمرير هنا في الخطوات القادمة)
+
+
+// ======================= Counter-Up Animation (IMPROVED & FASTER) =======================
+
+const counters = document.querySelectorAll('.counter');
+
+const animateCounter = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    const duration = 2000; // مدة الأنيميشن بالمللي ثانية (2 ثانية)
+    const stepTime = 10;
+    const totalSteps = duration / stepTime;
+    const increment = target / totalSteps;
+
+    let currentCount = 0;
+
+    const updateCounter = () => {
+        currentCount += increment;
+
+        if (currentCount < target) {
+            counter.innerText = Math.ceil(currentCount).toLocaleString(); // استخدام toLocaleString لإضافة الفواصل (e.g., 15,000)
+            setTimeout(updateCounter, stepTime);
+        } else {
+            counter.innerText = target.toLocaleString();
+        }
+    };
+
+    updateCounter();
+};
+
+const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target); // لتشغيل الأنيميشن مرة واحدة فقط
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+counters.forEach(counter => {
+    counterObserver.observe(counter);
+});
