@@ -244,6 +244,69 @@ ul {
     color: var(--white-color);
     margin-top: 0.5rem;
 }
+/* ======================= Highlight Section (IMPROVED) ======================= */
+.highlight-section {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    padding: 2.5rem 0; /* تقليل الـ padding العمودي قليلاً */
+}
+
+.highlight-grid {
+    display: flex; /* <<-- تغيير من grid إلى flex لتحكم أفضل */
+    flex-wrap: wrap; /* للسماح بالانتقال لأسفل في الموبايل */
+    justify-content: space-between; /* توزيع المساحة بين العناصر */
+    align-items: center;
+    gap: 2rem;
+}
+
+.highlight-icon i {
+    font-size: 3.5rem;
+}
+
+.highlight-content {
+    flex-grow: 1; /* السماح لهذا الجزء بالنمو ليأخذ المساحة المتاحة */
+}
+
+.highlight-content h2 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+}
+.highlight-content p {
+    margin: 0;
+    opacity: 0.9;
+    max-width: 600px; /* تحديد عرض أقصى للنص */
+}
+
+/* التعديل الأهم: تصميم الزر */
+.highlight-action .btn {
+    background-color: transparent; /* <<-- خلفية شفافة */
+    color: var(--dark-bg);
+    border: 2px solid var(--dark-bg); /* <<-- إطار أسود */
+    padding: 12px 30px;
+    font-size: 1rem;
+    box-shadow: none;
+}
+.highlight-action .btn:hover {
+    background-color: var(--dark-bg); /* <<-- يصبح أسود عند المرور */
+    color: var(--primary-color); /* <<-- والنص يصبح ذهبيًا */
+}
+
+/* Responsive for Highlight Section */
+@media (max-width: 768px) {
+    .highlight-grid {
+        flex-direction: column; /* تحويله لعمود واحد */
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .highlight-content p {
+        max-width: 100%;
+    }
+    /* عكس ترتيب العناصر في الموبايل ليكون الزر في الأسفل */
+    .highlight-icon { order: 1; }
+    .highlight-content { order: 2; }
+    .highlight-action { order: 3; }
+}
 
 /* ======================= About Us Section ======================= */
 #about {
